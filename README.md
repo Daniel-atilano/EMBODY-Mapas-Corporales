@@ -1,7 +1,7 @@
 # EMBODY-Mapas-Corporales
 
 Repositorio con instrucciones para la ejecución del EMBODY Mapas corporales desde una interfaz html. Se describe el acceso a los datos y las instrucciones de la tarea. 
-La información de acceso la encontraran en el manual de pdf.
+La información de acceso la encontrarán en el manual de pdf.
 
 ## 📚 Wiki y Documentación
 
