@@ -1,0 +1,24 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Editor files
+.vscode/
+.idea/
+*.sublime-*
+
+# Build artifacts
+*.log
+node_modules/
+dist/
+build/
+
+# Wiki repo clone (if checking out locally)
+wiki-repo/
