@@ -43,6 +43,7 @@ Para acceder a los **sujetos** los usuarios deben ingresar a la ruta del servido
 - **IP del servidor:** `172.24.250.39`
 - **Acceso:** disponible **desde el cluster del INB UNAM** (red interna).
 - **Usuario:** `server_v1`
+- **Contraseña** Previa solicitud al creador de este repositorio o al correo dan.luchin06@gmail.com
 
 > Si estás fuera del cluster/red interna del INB UNAM, es posible que no tengas conectividad directa al servidor (IP privada) ni a las rutas internas.
 
