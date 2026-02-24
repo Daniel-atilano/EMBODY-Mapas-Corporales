@@ -1,0 +1,14 @@
+Nada especial (neutral)
+Miedo
+Ira
+Asco
+Tristeza
+Felicidad
+Sorpresa
+Ansiedad
+Amor
+Depresión
+Desprecio
+Orgullo
+Vergüenza
+Celos
