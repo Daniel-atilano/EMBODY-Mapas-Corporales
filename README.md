@@ -92,7 +92,76 @@ Este bloque se repite para cada una de las **14 emociones** presentadas en el in
 
 ---
 
-## 7) CITACIÓN (requerida si usas el instrumento)
+## 7) Análisis de mapas corporales con MATLAB
+
+La carpeta `matlab/` contiene los scripts y datos necesarios para **preprocesar, visualizar y analizar estadísticamente** los mapas corporales obtenidos con el experimento.
+
+### Contenido de la carpeta `matlab/`
+
+| Archivo / Carpeta | Descripción |
+|---|---|
+| `embody_demo.m` | Script principal de preprocesamiento y visualización individual por sujeto |
+| `embody_stats.m` | Script de análisis estadístico grupal (t-test de una muestra con corrección FDR) |
+| `load_subj.m` | Función auxiliar para cargar los datos CSV de cada sujeto |
+| `FDR.m` | Función para la corrección de comparaciones múltiples (Benjamini-Hochberg FDR) |
+| `showpaint.m` | Función auxiliar para visualizar trazos de pintura sin preprocesar |
+| `base.png` | Imagen base de la silueta corporal usada como fondo en las visualizaciones |
+| `mask.png` | Máscara binaria que delimita la región corporal válida para el análisis estadístico |
+| `demo_subjects/` | Carpeta con 3 sujetos de demostración (IDs: `243952`, `642687`, `984332`) |
+| `models/PNAS2014/` | Archivo `2014_Bodily_Maps_of_Emotions.mat` con los mapas del artículo original de Nummenmaa et al. (2014) |
+
+### Estructura de datos por sujeto
+
+Cada subcarpeta de `demo_subjects/` (nombrada con el ID del sujeto) contiene:
+
+- **`0.csv` a `13.csv`**: Un archivo CSV por cada una de las **14 emociones**, con los movimientos del ratón y los trazos de pintura registrados durante la sesión.
+- **`presentation.txt`**: Orden de presentación de las emociones para ese sujeto (el experimento aleatoriza el orden entre participantes).
+- **`data.txt`**: Metadatos del sujeto.
+
+Las 14 condiciones emocionales (indexadas de 0 a 13) son:
+
+| Índice | Emoción |
+|--------|---------|
+| 0 | Nada especial (neutral) |
+| 1 | Miedo |
+| 2 | Ira |
+| 3 | Asco |
+| 4 | Tristeza |
+| 5 | Felicidad |
+| 6 | Sorpresa |
+| 7 | Ansiedad |
+| 8 | Amor |
+| 9 | Depresión |
+| 10 | Desprecio |
+| 11 | Orgullo |
+| 12 | Vergüenza |
+| 13 | Celos |
+
+### Flujo de análisis
+
+#### Paso A — Preprocesamiento individual (`embody_demo.m`)
+
+1. Ajusta la variable `basepath` para que apunte a la carpeta que contiene los sujetos recolectados.
+2. El script carga los datos de cada sujeto con `load_subj`, que lee los archivos CSV de cada emoción siguiendo el orden indicado en `presentation.txt`.
+3. Reconstruye el mapa de activaciones a partir de las posiciones del ratón registradas mientras el botón estaba presionado (campo `paint` del CSV).
+4. Aplica un **filtro gaussiano** (kernel de 15×15 píxeles, σ=5) sobre la imagen reconstruida para simular el tamaño del pincel.
+5. Calcula la **diferencia activación − desactivación** restando la mitad derecha de la silueta a la izquierda (diseño del experimento: lado izquierdo de la pantalla = activación, lado derecho = desactivación).
+6. Guarda los resultados preprocesados en la carpeta `preprocessed/` como archivos `.mat` con el nombre `<ID_sujeto>_preprocessed.mat`.
+7. Genera una figura por sujeto con una cuadrícula de los 14 mapas corporales, coloreados con un mapa de calor bicromático frío-caliente.
+
+#### Paso B — Análisis estadístico grupal (`embody_stats.m`)
+
+1. Carga todos los archivos `.mat` generados en el Paso A desde la carpeta `preprocessed/`.
+2. Realiza un **t-test de una muestra** (contraste frente a media = 0) píxel a píxel para cada una de las 14 condiciones, considerando únicamente los píxeles dentro de la máscara corporal (`mask.png`).
+3. Aplica **corrección por comparaciones múltiples** mediante el método de Benjamini-Hochberg (FDR; función `FDR.m`) a nivel de todas las condiciones combinadas.
+4. Genera una figura con los **t-mapas estadísticos** de cada emoción usando un mapa de color frío-caliente, donde los valores no significativos aparecen en negro.
+
+> **Requisitos de software:** MATLAB con Image Processing Toolbox y Statistics and Machine Learning Toolbox.  
+> El código fue desarrollado originalmente por Enrico Glerean y Lauri Nummenmaa. Los propios autores señalan que sería relativamente sencillo portar el código a Python para quienes no dispongan de licencia MATLAB.
+
+---
+
+## 8) CITACIÓN (requerida si usas el instrumento)
 
 Si utilizas este instrumento en investigación, por favor cita:
 
