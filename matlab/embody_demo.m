@@ -32,16 +32,16 @@ labels={'Nada especial (neutral)'
 'Miedo'
 'Ira'
 'Asco'
-Tristeza
-Felicidad
-Sorpresa
-Ansiedad
-Amor
-Depresión
-Desprecio
-Orgullo
-Vergüenza
-Celos
+'Tristeza'
+'Felicidad'
+'Sorpresa'
+'Ansiedad'
+'Amor'
+'DepresiÃ³n'
+'Desprecio'
+'Orgullo'
+'VergÃ¼enza'
+'Celos'
 };
 mask=imread('C:\Users\dancu\Downloads\embody-master\embody-master\matlab\mask.png');
 
