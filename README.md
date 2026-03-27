@@ -5,6 +5,12 @@ Este repositorio documenta cómo **acceder, ejecutar y recuperar datos** de la v
 > **Importante (créditos y procedencia):**  
 > Esta implementación es una **copia** del *emBODY tool* desarrollado por **Enrico Glerean, Lauri Nummenmaa y Juulia Suvilehto**.  
 > Para su uso en este proyecto, el experimento fue **traducido al español** y adaptado para su implementación local (infraestructura INB UNAM).   
+
+
+Direccion y Coordinacion: Dr. Fernando Alejandro Barrios Alvarez y Dr. Daniel Atilano Barbosa
+
+Apoyo Técnico: Mtro. Leopoldo Gonzalez Santos
+
 > Publicado bajo licencia MIT.
 
 ---
